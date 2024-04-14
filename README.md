@@ -21,3 +21,6 @@ Note: The cookie typically expires in about 3 months.
 
 ## Notify
 See in [qinglong](https://github.com/whyour/qinglong/blob/develop/sample/notify.py)
+
+## Tech
+See [tech](https://github.com/winterfell2021/lostark_wegame_helper/blob/master/tech.md)
