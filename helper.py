@@ -17,7 +17,7 @@ class User:
         self.userId = 0
         self.roleId = 0
         self.xy_role_id = 0
-        self.momentId = 0
+        self.momentId = 260841843
         self.token = ""
         self.message = ""
 
@@ -65,7 +65,7 @@ class User:
         res = requests.post(url, headers=HEADERS, data=payload)
         try:
             data = self._check_response(res)
-            logger.info(f"Role detail: {data['data']}")
+            logger.debug(f"Role detail: {data}")
         except Exception as e:
             raise e
 
@@ -167,7 +167,6 @@ class User:
         response = requests.request("GET", url, headers=headers)
         soup = BeautifulSoup(response.text, "html.parser")
         axis_line_items = soup.select(".axis-line-item")
-
         for item in axis_line_items:
             title = item.find("h5", class_="title").text.strip()
             desc = item.find("p", class_="desc").text.strip()
@@ -179,8 +178,12 @@ class User:
                         time.sleep(5)
                 elif title == "每日发布动态":
                     self.add_moment()
-                elif title == "每日浏览动态详情1则":
-                    self.view_moment_detial(self.momentId)
+                elif title == "每日浏览动态详情3则":
+                    for i in range(3):
+
+                        self.view_moment_detial(self.momentId - i)
+                        time.sleep(5)
+
                 elif title == "每日访问APP商城":
                     self.view_shop()
                 elif title == "每日查看角色卡详情页":
@@ -191,7 +194,7 @@ class User:
                         time.sleep(2)
                         self.like_moment(self.momentId + 5 + i, 0)
                         time.sleep(5)
-                elif title == "每日浏览资讯2篇":
+                elif title == "每日浏览文章资讯2篇":
                     self.list_info()
             self.message += f"【{title}】{'已完成' if complete else '未完成'}\n"
             logging.info(f"{title} - {desc} - {complete}")
@@ -213,6 +216,7 @@ class User:
         self.get_xy_role()
         if jyp == "1":
             self.exchange(3185172)
+            time.sleep(5)
         if yb == "1":
             self.exchange(3185174)
 
