@@ -20,6 +20,7 @@ class User:
         self.momentId = 260841843
         self.token = ""
         self.message = ""
+        self.notify = False
 
     def _check_response(self, res):
         if res.status_code != 200:
@@ -200,8 +201,8 @@ class User:
             logging.info(f"{title} - {desc} - {complete}")
 
     def get_score(self):
-        url = "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=629910&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId=629910&iFlowId=1025934&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D%26version%3D27&sServiceDepartment=xinyue"
+        url = "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=637628&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
+        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId=637628&iFlowId=1033502&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D%26version%3D27&sServiceDepartment=xinyue"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",
@@ -209,16 +210,18 @@ class User:
             "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 GH_QQConnect GameHelper_1010/1.1.0.17.2103070017",
         }
         res = requests.post(url, data=payload, headers=headers).json()
+        # print(res)
         score = res["modRet"]["sOutValue1"]
         jyp, yb = res["modRet"]["sOutValue2"].split(",")[:2]
         logger.info(f"当前积分：{score}，交易牌={jyp}，银币={yb}")
         self.message += f"当前积分：{score}，交易牌={jyp}，银币={yb}\n"
         self.get_xy_role()
         if jyp == "1":
-            self.exchange(3185172)
+            self.notify = True
+            self.exchange(3264298)
             time.sleep(5)
         if yb == "1":
-            self.exchange(3185174)
+            self.exchange(3264300)
 
     def get_xy_role(self):
         url = "https://agw.xinyue.qq.com/amp2.RoleSrv/GetSpecifyRoleList"
@@ -247,8 +250,8 @@ class User:
         logger.info(f"心悦角色ID：{self.xy_role_id}")
 
     def exchange(self, exchange_id):
-        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=629910&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"gameId=&sArea=50&iSex=&sRoleId={self.xy_role_id}&iGender=&uGid=251&sPlatId=2&sPartition=5&sServiceType=fz&actQuantity=1&exchangeNo={exchange_id}&uin={self.uin}&userId={self.userId}&userToken={self.token}&cGameId=1010&subGameId=10040&objCustomMsg=&areaname=&roleid=&rolelevel=&rolename=&areaid=&iActivityId=629910&iFlowId=1025931&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D09%26version%3D27&sServiceDepartment=xinyue"
+        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=637628&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
+        payload = f"gameId=&sArea=50&iSex=&sRoleId={self.xy_role_id}&iGender=&uGid=251&sPlatId=2&sPartition=5&sServiceType=fz&actQuantity=1&exchangeNo={exchange_id}&uin={self.uin}&userId={self.userId}&userToken={self.token}&cGameId=1010&subGameId=10040&objCustomMsg=&areaname=&roleid=&rolelevel=&rolename=&areaid=&iActivityId=637628&iFlowId=1033500&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D09%26version%3D27&sServiceDepartment=xinyue"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",
