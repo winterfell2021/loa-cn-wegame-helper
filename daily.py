@@ -35,14 +35,14 @@ if __name__ == "__main__":
         }
 
         data = {
-            'iChartId': '289989',
-            'iSubChartId': '289989',
+            'iChartId': '299345',
+            'iSubChartId': '299345',
             'sIdeToken': 'FC0RcM',
             'e_code': '0',
             'g_code': '0',
-            'eas_url': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240516exstore%2F',
-            'eas_refer': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240516exstore%2F%3Freqid%3D3dff389c-9cca-4eeb-80a6-728de62064f6%26version%3D27',
-            'sMiloTag': 'AMS-fz-0523204125-4LSI0C-640300-1037162',
+            'eas_url': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240612exstore%2F',
+            'eas_refer': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240612exstore%2F%3Freqid%3D27a894a2-0e9f-4e17-8e03-e6f3b51380cd%26version%3D27',
+            'sMiloTag': 'AMS-fz-0625003645-DpFGrM-647384-1046131',
             'ams_targetappid': 'wx0a71413944e4c4d0',
             'channel': 'index',
         }

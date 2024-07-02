@@ -19,6 +19,7 @@ if __name__ == "__main__":
             user.get_main_role()
             user.get_task_info()
             user.get_score()
+            
             if user.notify:
                 send('掌上命运方舟积分活动', user.message)
         except Exception as e:
