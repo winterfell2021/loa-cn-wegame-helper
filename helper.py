@@ -6,13 +6,15 @@ from bs4 import BeautifulSoup
 from consts import ITEMS
 
 DAILY = ["交易牌*2","蕴含卢佩恩之光的货币箱子*2","仙灵恢复药（绑定）*6"]
-WEEKLY = ["[每日]艾芙娜委托完成券*6","混沌地牢休息奖励恢复秘药[1]*1","功能型战斗道具箱子*5","增益型战斗道具箱子*5","传说~高级卡牌包2 *5","[每周]艾芙娜委托+1*1","新手生命气息恢复药水*5"]
+WEEKLY = ["[每日]艾芙娜委托完成券*6","混沌地牢休息奖励恢复秘药[1]*1","战斗道具综合箱子*5","传说~高级卡牌包2 *5","[每周]艾芙娜委托+1*1","新手生命气息恢复药水*5"]
 MONTHLY = ["[活动]贝拉的祝福（14天）*1", "银币幸运箱子*5", "梅内里克之书*1"]
 
 logger = logging.getLogger(__name__)
 HEADERS = {"Content-Type": "application/x-www-form-urlencoded"}
 BASE_URL = "https://api2.helper.qq.com"
 
+ACTIVITY_ID = 659174
+FLOW_ID = 1058776
 
 class User:
     def __init__(self, app_id: str, access_token: str, open_id: str):
@@ -206,8 +208,10 @@ class User:
             logging.info(f"{title} - {desc} - {complete}")
 
     def get_score(self):
-        url = "https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=648474&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId=648474&iFlowId=1047905&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
+        flow_id = 1058778
+        activity_id = 659174
+        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId={activity_id}&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
+        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId={activity_id}&iFlowId={flow_id}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",
@@ -276,8 +280,8 @@ class User:
 
     def exchange(self, exchange_id):
         self.notify = True
-        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId=648474&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"gameId=&sArea=50&iSex=&sRoleId={self.xy_role_id}&iGender=&uGid=251&sPlatId=2&sPartition=5&sServiceType=fz&actQuantity=1&exchangeNo={exchange_id}&uin={self.uin}&userId={self.userId}&userToken={self.token}&cGameId=1010&subGameId=10040&objCustomMsg=&areaname=&roleid=&rolelevel=&rolename=&areaid=&iActivityId=648474&iFlowId=1047903&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D09%26version%3D27&sServiceDepartment=xinyue"
+        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId={ACTIVITY_ID}&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
+        payload = f"gameId=&sArea=50&iSex=&sRoleId={self.xy_role_id}&iGender=&uGid=251&sPlatId=2&sPartition=5&sServiceType=fz&actQuantity=1&exchangeNo={exchange_id}&uin={self.uin}&userId={self.userId}&userToken={self.token}&cGameId=1010&subGameId=10040&objCustomMsg=&areaname=&roleid=&rolelevel=&rolename=&areaid=&iActivityId={ACTIVITY_ID}&iFlowId={FLOW_ID}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http%3A%2F%2Fmwegame.qq.com%2Fhelper%2Ffz%2Fscore%2F&eas_refer=http%3A%2F%2Fact.xinyue.qq.com%2F%3Freqid%3D09%26version%3D27&sServiceDepartment=xinyue"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",

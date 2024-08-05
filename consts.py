@@ -6,8 +6,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "40",
-        "iPackageId": "3357912",
-        "sPackageId": "5406047",
+        "iPackageId": "3406495",
+        "sPackageId": "5476500",
         "sImg": "r.default",
         "sPackageName": "交易牌*2"
     },
@@ -18,8 +18,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "40",
-        "iPackageId": "3357913",
-        "sPackageId": "5406048",
+        "iPackageId": "3406496",
+        "sPackageId": "5476501",
         "sImg": "i.default",
         "sPackageName": "蕴含卢佩恩之光的货币箱子*2"
     },
@@ -30,8 +30,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "60",
-        "iPackageId": "3357914",
-        "sPackageId": "5406049",
+        "iPackageId": "3406497",
+        "sPackageId": "5476502",
         "sImg": "o.default",
         "sPackageName": "仙灵恢复药（绑定）*6"
     },
@@ -42,8 +42,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "30",
-        "iPackageId": "3357917",
-        "sPackageId": "5406052",
+        "iPackageId": "3406500",
+        "sPackageId": "5476505",
         "sImg": "a.default",
         "sPackageName": "跳跃精华*1"
     },
@@ -54,8 +54,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "40",
-        "iPackageId": "3357915",
-        "sPackageId": "5406050",
+        "iPackageId": "3406498",
+        "sPackageId": "5476503",
         "sImg": "s.default",
         "sPackageName": "[每日]艾芙娜委托完成券*6"
     },
@@ -66,8 +66,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "40",
-        "iPackageId": "3357916",
-        "sPackageId": "5406051",
+        "iPackageId": "3406499",
+        "sPackageId": "5476504",
         "sImg": "c.default",
         "sPackageName": "混沌地牢休息奖励恢复秘药[1]*1"
     },
@@ -78,10 +78,10 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "30",
-        "iPackageId": "3357918",
-        "sPackageId": "5406053",
+        "iPackageId": "3406501",
+        "sPackageId": "5476506",
         "sImg": "u.default",
-        "sPackageName": "功能型战斗道具箱子*5"
+        "sPackageName": "战斗道具综合箱子*5"
     },
     {
         "exchangeNo": "8",
@@ -90,8 +90,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "30",
-        "iPackageId": "3357919",
-        "sPackageId": "5406054",
+        "iPackageId": "3406502",
+        "sPackageId": "5476507",
         "sImg": "l.default",
         "sPackageName": "增益型战斗道具箱子*5"
     },
@@ -102,8 +102,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "25",
-        "iPackageId": "3357920",
-        "sPackageId": "5406055",
+        "iPackageId": "3406503",
+        "sPackageId": "5476508",
         "sImg": "f.default",
         "sPackageName": "传说~高级卡牌包2 *5"
     },
@@ -114,8 +114,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "10",
-        "iPackageId": "3357921",
-        "sPackageId": "5406056",
+        "iPackageId": "3406504",
+        "sPackageId": "5476509",
         "sImg": "d.default",
         "sPackageName": "[每周]艾芙娜委托+1*1"
     },
@@ -126,8 +126,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "25",
-        "iPackageId": "3358077",
-        "sPackageId": "5406233",
+        "iPackageId": "3406505",
+        "sPackageId": "5476510",
         "sImg": "p.default",
         "sPackageName": "新手生命气息恢复药水*5"
     },
@@ -138,8 +138,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "350",
-        "iPackageId": "3358078",
-        "sPackageId": "5406234",
+        "iPackageId": "3406506",
+        "sPackageId": "5476511",
         "sImg": "h.default",
         "sPackageName": "[活动]贝拉的祝福（14天）*1"
     },
@@ -150,8 +150,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "350",
-        "iPackageId": "3358079",
-        "sPackageId": "5406235",
+        "iPackageId": "3406507",
+        "sPackageId": "5476512",
         "sImg": "v.default",
         "sPackageName": "银币幸运箱子*5"
     },
@@ -162,8 +162,8 @@ ITEMS = [
         "monthLimit": "0",
         "allLimit": "0",
         "exchangeScore": "350",
-        "iPackageId": "3358082",
-        "sPackageId": "5406238",
+        "iPackageId": "3406508",
+        "sPackageId": "5476513",
         "sImg": "m.default",
         "sPackageName": "梅内里克之书*1"
     }
