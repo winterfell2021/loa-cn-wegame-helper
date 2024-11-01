@@ -1,20 +1,32 @@
-import time
-import requests
 import logging
-from bs4 import BeautifulSoup
+import time
 
+import requests
+from bs4 import BeautifulSoup
 from consts import ITEMS
 
-DAILY = ["交易牌*2","蕴含卢佩恩之光的货币箱子*2","仙灵恢复药（绑定）*6"]
-WEEKLY = ["[每日]艾芙娜委托完成券*6","混沌地牢休息奖励恢复秘药[1]*1","战斗道具综合箱子*5","传说~高级卡牌包2 *5","[每周]艾芙娜委托+1*1","新手生命气息恢复药水*5"]
-MONTHLY = ["[活动]贝拉的祝福（14天）*1", "银币幸运箱子*5", "梅内里克之书*1"]
+DAILY = [
+    "恢复型战斗道具箱子*3",
+    "交易牌*2",
+]
+WEEKLY = [
+    "战斗道具综合箱子*5",
+    "增益型战斗道具箱子*15",
+]
+MONTHLY = [
+    "[活动]贝拉的祝福(14天)*1",
+    "银币幸运箱子*5",
+    "梅内里克之书*2",
+    "传说~稀有卡牌包3*5",
+]
 
 logger = logging.getLogger(__name__)
 HEADERS = {"Content-Type": "application/x-www-form-urlencoded"}
 BASE_URL = "https://api2.helper.qq.com"
 
-ACTIVITY_ID = 659174
-FLOW_ID = 1058776
+ACTIVITY_ID = 677855
+FLOW_ID = 1080921
+
 
 class User:
     def __init__(self, app_id: str, access_token: str, open_id: str):
@@ -24,7 +36,7 @@ class User:
         self.userId = 0
         self.roleId = 0
         self.xy_role_id = 0
-        self.momentId = 260841843
+        self.momentId = 260841845
         self.token = ""
         self.message = ""
         self.notify = False
@@ -75,7 +87,7 @@ class User:
             data = self._check_response(res)
             logger.debug(f"Role detail: {data}")
         except Exception as e:
-            raise e
+            logger.error(e)
 
     def add_comment(self, moment_id: int):
         url = f"{BASE_URL}/moment/addcomment"
@@ -97,7 +109,7 @@ class User:
             data = self._check_response(res)
             logger.info(f"Moment detail: {data['data']}")
         except Exception as e:
-            raise e
+            logger.error(e)
 
     def view_shop(self):
         url = f"{BASE_URL}/user/event"
@@ -107,7 +119,7 @@ class User:
             data = self._check_response(res)
             logger.info(f"Shop: {data['data']}")
         except Exception as e:
-            raise e
+            logger.error(e)
 
     def like_moment(self, moment_id: int, like: int = 1):
         url = f"{BASE_URL}/moment/like"
@@ -118,7 +130,7 @@ class User:
             data = self._check_response(res)
             logger.info(f"Comment liked: {data['data']}")
         except Exception as e:
-            raise e
+            logger.error(f"failed to like comment: {e}")
 
     def add_moment(self):
         url = f"{BASE_URL}/moment/add"
@@ -196,7 +208,7 @@ class User:
                     self.view_shop()
                 elif title == "每日查看角色卡详情页":
                     self.view_role_detail()
-                elif title == "每日在资讯/动态点赞5次":
+                elif title == "每日点赞动态2次":
                     for i in range(5):
                         self.like_moment(self.momentId + 5 + i, 1)
                         time.sleep(2)
@@ -204,14 +216,15 @@ class User:
                         time.sleep(5)
                 elif title == "每日浏览文章资讯2篇":
                     self.list_info()
+                elif title.startswith('每日'):
+                    logger.error(f"【{title}】未适配")
             self.message += f"【{title}】{'已完成' if complete else '未完成'}\n"
             logging.info(f"{title} - {desc} - {complete}")
 
     def get_score(self):
-        flow_id = 1058778
-        activity_id = 659174
-        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId={activity_id}&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId={activity_id}&iFlowId={flow_id}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
+        flow_id = 1080923
+        url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId={ACTIVITY_ID}&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
+        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId={ACTIVITY_ID}&iFlowId={flow_id}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",
@@ -219,38 +232,42 @@ class User:
             "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 GH_QQConnect GameHelper_1010/1.1.0.17.2103070017",
         }
         res = requests.post(url, data=payload, headers=headers).json()
-        score = res["modRet"]["sOutValue1"]
-        item_mapping = {
-            vo['sPackageId']: vo
-            for vo in ITEMS
-        }
-        for item_id, state, state2, state3 in zip(res["modRet"]["sOutValue6"].split(','), res["modRet"]["sOutValue2"].split(';')[0].split(','), res["modRet"]["sOutValue3"].split(';')[0].split(','), res["modRet"]["sOutValue4"].split(';')[0].split(',')):
+        try:
+            score = res["modRet"]["sOutValue1"]
+        except:
+            return
+        item_mapping = {vo["sPackageId"]: vo for vo in ITEMS}
+        for item_id, state, state2, state3 in zip(
+            res["modRet"]["sOutValue6"].split(","),
+            res["modRet"]["sOutValue2"].split(";")[0].split(","),
+            res["modRet"]["sOutValue3"].split(";")[0].split(","),
+            res["modRet"]["sOutValue4"].split(";")[0].split(","),
+        ):
             item = item_mapping.get(item_id, None)
             if not item:
                 logging.error(f"{item_id} not found")
                 continue
-            if item['sPackageName'] in DAILY:
-                if state != '0':
+            if item["sPackageName"] in DAILY:
+                if state != "0":
                     logger.info(f"去兑换 {item['sPackageName']}")
-                    self.exchange(item['iPackageId'])
+                    self.exchange(item["iPackageId"])
                     time.sleep(5)
                 else:
                     logger.debug(f"{item['sPackageName']} 不可兑换")
-            if item['sPackageName'] in WEEKLY:
-                if state2 != '0':
+            if item["sPackageName"] in WEEKLY:
+                if state2 != "0":
                     logger.info(f"去兑换 {item['sPackageName']}")
-                    self.exchange(item['iPackageId'])
+                    self.exchange(item["iPackageId"])
                     time.sleep(5)
-            if item['sPackageName'] in MONTHLY:
-                if state3 != '0':
+            if item["sPackageName"] in MONTHLY:
+                if state3 != "0":
                     logger.info(f"去兑换 {item['sPackageName']}")
-                    self.exchange(item['iPackageId'])
+                    self.exchange(item["iPackageId"])
                     time.sleep(5)
         jyp, yb = res["modRet"]["sOutValue2"].split(",")[:2]
         logger.info(f"当前积分：{score}，交易牌={jyp}，银币={yb}")
         self.message += f"当前积分：{score}，交易牌={jyp}，银币={yb}\n"
-        self.get_xy_role()
-
+        # self.get_xy_role()
 
     def get_xy_role(self):
         url = "https://agw.xinyue.qq.com/amp2.RoleSrv/GetSpecifyRoleList"

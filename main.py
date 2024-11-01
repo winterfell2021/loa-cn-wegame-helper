@@ -12,7 +12,7 @@ APP_ID = 102037747
 if __name__ == "__main__":
     with open("config.yaml", "r") as file:
         config = yaml.safe_load(file)
-    for user in config["users"]:
+    for user in config["users"][1:]:
         try:
             user = User(APP_ID, user["access_token"], user["open_id"])
             user.login()
@@ -26,3 +26,4 @@ if __name__ == "__main__":
             traceback.print_exc()
             print(f"Error: {e}")
         time.sleep(5)
+        break
