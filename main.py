@@ -19,6 +19,7 @@ if __name__ == "__main__":
             user.get_main_role()
             user.get_task_info()
             user.get_score()
+            user.excute_partner_task()
             
             if user.notify:
                 send('掌上命运方舟积分活动', user.message)
@@ -26,3 +27,4 @@ if __name__ == "__main__":
             traceback.print_exc()
             print(f"Error: {e}")
         time.sleep(5)
+        break

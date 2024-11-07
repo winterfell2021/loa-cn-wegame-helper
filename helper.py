@@ -307,3 +307,81 @@ class User:
         }
         res = requests.post(url, data=payload, headers=headers).json()
         print(res)
+        
+    def _parnet_request(self, function, payload):
+        url = f"https://api.bbs.lostark.qq.com/{function}"
+        headers = {
+            "Host": "api.bbs.lostark.qq.com",
+            "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",
+            "content-type": "application/x-www-form-urlencoded",
+            "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_1_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 GH_QQConnect GameHelper_1010/1.5.0.4.2103110004",
+        }
+        try:
+            return requests.post(url, data=payload, headers=headers).json()
+        except Exception as e:
+            logger.error(f"{function} 请求失败：{e}")
+            return None
+    
+    def partner_sign(self):
+        function = "partnersignin"
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=2"
+        res = self._parnet_request(function, payload)
+        if res and res["code"] == 200:
+            logger.info(f"签到成功")
+        else:
+            logger.error(f"签到失败：{res}")
+
+    def partnet_get_task_reward(self):
+        function = "partnergettaskreward"
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=2"
+        res = self._parnet_request(function, payload)
+        if res and res["code"] == 200:
+            logger.info(f"领取成功")
+        else:
+            logger.error(f"领取失败：{res}")
+            
+    def partner_get_level_reward(self):
+        function = "partnergetlevelreward"
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=3&id=0"
+        res = self._parnet_request(function, payload)
+        if res and res["code"] == 200:
+            logger.info(f"{res}")
+            logger.info(f"领取成功，获得{res['data']['data']['data']['sData']['result']['sPackageName']}")
+        else:
+            logger.error(f"领取失败：{res}")
+
+    def partner_get_user_info(self):
+        function = "partnergetuserinfo"
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}"
+        res = self._parnet_request(function, payload)
+        if res and res["code"] == 200:
+            logger.info(f"获取用户信息成功：{res}")
+            lottery_num = int(res["data"]["$ticket_num"]["log"]["jData"]["sData"])
+            if lottery_num > 0:
+                time.sleep(2)
+                if lottery_num >= 10:
+                    logger.info(f"抽奖次数：{lottery_num}，去十连抽")
+                    self.partner_user_lottery(2)
+                # else:
+                #     self.partner_user_lottery(1)
+                time.sleep(5)
+        else:
+            logger.error(f"获取用户信息失败：{res}")
+            
+    def partner_user_lottery(self, lottery_type: int = 2):
+        function = "partneruserlottery"
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&iPageSize=10&iPageNow=1&lottery_type={lottery_type}"
+        res = self._parnet_request(function, payload)
+        if res and res["code"] == 200:
+            logger.info(f"抽奖成功：{res}")
+        else:
+            logger.error(f"抽奖失败：{res}")
+
+    def excute_partner_task(self):
+        self.partner_sign()
+        time.sleep(2)
+        self.partnet_get_task_reward()
+        time.sleep(2)
+        self.partner_get_level_reward()
+        time.sleep(2)
+        self.partner_get_user_info()
