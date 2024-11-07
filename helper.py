@@ -309,6 +309,7 @@ class User:
         print(res)
         
     def _parnet_request(self, function, payload):
+        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&{payload}"
         url = f"https://api.bbs.lostark.qq.com/{function}"
         headers = {
             "Host": "api.bbs.lostark.qq.com",
@@ -324,7 +325,7 @@ class User:
     
     def partner_sign(self):
         function = "partnersignin"
-        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=2"
+        payload = "task_id=0&type=2"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
             logger.info(f"签到成功")
@@ -333,7 +334,7 @@ class User:
 
     def partnet_get_task_reward(self):
         function = "partnergettaskreward"
-        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=2"
+        payload = "task_id=0&type=2"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
             logger.info(f"领取成功")
@@ -342,7 +343,7 @@ class User:
             
     def partner_get_level_reward(self):
         function = "partnergetlevelreward"
-        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&task_id=0&type=3&id=0"
+        payload = "task_id=0&type=3&id=0"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
             logger.info(f"{res}")
@@ -352,8 +353,7 @@ class User:
 
     def partner_get_user_info(self):
         function = "partnergetuserinfo"
-        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}"
-        res = self._parnet_request(function, payload)
+        res = self._parnet_request(function, "")
         if res and res["code"] == 200:
             logger.info(f"获取用户信息成功：{res}")
             lottery_num = int(res["data"]["$ticket_num"]["log"]["jData"]["sData"])
@@ -370,7 +370,7 @@ class User:
             
     def partner_user_lottery(self, lottery_type: int = 2):
         function = "partneruserlottery"
-        payload = f"token={self.token}&user_id={self.userId}&openid={self.open_id}&access_token={self.access_token}&inv_user_id=false&login_type=qc&sRoleld={self.roleId}&iUin={self.uin}&sGiftPartition=5&sGiftArea=50&acctype=qc&appid={self.app_id}&iPageSize=10&iPageNow=1&lottery_type={lottery_type}"
+        payload = f"iPageSize=10&iPageNow=1&lottery_type={lottery_type}"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
             logger.info(f"抽奖成功：{res}")
