@@ -27,4 +27,3 @@ if __name__ == "__main__":
             traceback.print_exc()
             print(f"Error: {e}")
         time.sleep(5)
-        break
