@@ -1,1 +1,9 @@
-ITEMS = [{"exchangeNo":"1","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"20","iPackageId":"3544032","sPackageId":"5718972","sPackageName":"恢复型战斗道具箱子*3"},{"exchangeNo":"2","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"40","iPackageId":"3544034","sPackageId":"5718974","sPackageName":"交易牌*2"},{"exchangeNo":"3","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"50","iPackageId":"3544037","sPackageId":"5718977","sPackageName":"战斗道具综合箱子*5"},{"exchangeNo":"4","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"50","iPackageId":"3544039","sPackageId":"5718979","sPackageName":"增益型战斗道具箱子*15"},{"exchangeNo":"5","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"200","iPackageId":"3544045","sPackageId":"5718985","sPackageName":"银币幸运箱子*5"},{"exchangeNo":"6","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"350","iPackageId":"3544046","sPackageId":"5718986","sPackageName":"[活动]贝拉的祝福(14天)*1"},{"exchangeNo":"7","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"300","iPackageId":"3544047","sPackageId":"5718987","sPackageName":"传说~稀有卡牌包3*5"},{"exchangeNo":"8","dayLimit":"0","weekLimit":"0","monthLimit":"0","allLimit":"0","exchangeScore":"500","iPackageId":"3544048","sPackageId":"5718988","sPackageName":"梅内里克之书*2"}]
+import json
+
+with open("consts.json", "r") as f:
+    consts = json.load(f)
+
+ACTIVITY_ID = consts["activity_id"]
+GET_SCORE_FLOW_ID = consts["flow_id"]
+FLOW_ID = consts["exchange_flow_id"]
+ITEMS = consts["packages"]

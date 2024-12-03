@@ -26,4 +26,5 @@ if __name__ == "__main__":
         except Exception as e:
             traceback.print_exc()
             print(f"Error: {e}")
+        print('\n\n')
         time.sleep(5)

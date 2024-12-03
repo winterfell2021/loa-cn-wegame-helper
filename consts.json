@@ -1,0 +1,57 @@
+{
+    "activity_id": "685221",
+    "flow_id": "1090103",
+    "exchange_flow_id": "1090101",
+    "packages": [
+        {
+            "iPackageId": "3607849",
+            "sPackageId": "5852202",
+            "sPackageName": "恢复型战斗道具箱子*3"
+        },
+        {
+            "iPackageId": "3607862",
+            "sPackageId": "5852215",
+            "sPackageName": "跳跃精华*1"
+        },
+        {
+            "iPackageId": "3607863",
+            "sPackageId": "5852216",
+            "sPackageName": "新手生命气息恢复药水*2"
+        },
+        {
+            "iPackageId": "3607850",
+            "sPackageId": "5852203",
+            "sPackageName": "交易牌*2"
+        },
+        {
+            "iPackageId": "3607851",
+            "sPackageId": "5852204",
+            "sPackageName": "战斗道具综合箱子*5"
+        },
+        {
+            "iPackageId": "3607852",
+            "sPackageId": "5852205",
+            "sPackageName": "增益型战斗道具箱子*15"
+        },
+        {
+            "iPackageId": "3607853",
+            "sPackageId": "5852206",
+            "sPackageName": "银币幸运箱子*5"
+        },
+        {
+            "iPackageId": "3607854",
+            "sPackageId": "5852207",
+            "sPackageName": "[活动]贝拉的祝福(14天)*1"
+        },
+        {
+            "iPackageId": "3607855",
+            "sPackageId": "5852208",
+            "sPackageName": "传说~稀有卡牌包3*5"
+        },
+        {
+            "iPackageId": "3607856",
+            "sPackageId": "5852209",
+            "sPackageName": "梅内里克之书*2"
+        }
+    ]
+}

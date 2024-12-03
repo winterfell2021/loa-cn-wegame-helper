@@ -3,11 +3,13 @@ import time
 
 import requests
 from bs4 import BeautifulSoup
-from consts import ITEMS
+from consts import ITEMS, ACTIVITY_ID, GET_SCORE_FLOW_ID, FLOW_ID
 
 DAILY = [
     "恢复型战斗道具箱子*3",
     "交易牌*2",
+    "跳跃精华*1",
+    "新手生命气息恢复药水*2"
 ]
 WEEKLY = [
     "战斗道具综合箱子*5",
@@ -23,10 +25,6 @@ MONTHLY = [
 logger = logging.getLogger(__name__)
 HEADERS = {"Content-Type": "application/x-www-form-urlencoded"}
 BASE_URL = "https://api2.helper.qq.com"
-
-ACTIVITY_ID = 677855
-FLOW_ID = 1080921
-
 
 class User:
     def __init__(self, app_id: str, access_token: str, open_id: str):
@@ -222,9 +220,8 @@ class User:
             logging.info(f"{title} - {desc} - {complete}")
 
     def get_score(self):
-        flow_id = 1080923
         url = f"https://act.game.qq.com/ams/ame/amesvr?ameVersion=0.3&sServiceType=fz&iActivityId={ACTIVITY_ID}&sServiceDepartment=xinyue&sSDID=&sMiloTag=f&_="
-        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId={ACTIVITY_ID}&iFlowId={flow_id}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
+        payload = f"userId={self.userId}&userToken={self.token}&uin={self.uin}&sServiceType=fz&uGid=251&iActivityId={ACTIVITY_ID}&iFlowId={GET_SCORE_FLOW_ID}&g_tk=1842395457&e_code=0&g_code=0&eas_url=http://mwegame.qq.com/helper/fz/score2407/&eas_refer=http://mwegame.qq.com/helper/fz/score2407/jump.html"
         headers = {
             "Host": "act.game.qq.com",
             "Cookie": f"access_token={self.access_token}; acctype=qc; appid={self.app_id}; openid={self.open_id};",

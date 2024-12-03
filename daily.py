@@ -4,18 +4,18 @@ import yaml
 from loguru import logger
 tasks = [
     {
-        'iChartId': '333399',
-        'iSubChartId': '333399',
+        'iChartId': '343166',
+        'iSubChartId': '343166',
         'sIdeToken': 'FC0RcM',
     },
     {
-        'iChartId': '333397',
-        'iSubChartId': '333397',
+        'iChartId': '343166',
+        'iSubChartId': '343166',
         'sIdeToken': 'niKkHR',
     },
     {
-        'iChartId': '333397',
-        'iSubChartId': '333397',
+        'iChartId': '343166',
+        'iSubChartId': '343166',
         'sIdeToken': 'niKkHR',
     },
     {
