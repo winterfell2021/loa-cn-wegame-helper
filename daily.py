@@ -4,45 +4,34 @@ import yaml
 from loguru import logger
 tasks = [
     {
-        'iChartId': '343166',
-        'iSubChartId': '343166',
-        'sIdeToken': 'FC0RcM',
+        'iChartId': '351942',
+        'iSubChartId': '351942',
+        'sIdeToken': 'kwQGNV',
+    },
+     {
+        'iChartId': '351951',
+        'iSubChartId': '351951',
+        'sIdeToken': '3DaEq5',
+        'query': True,
     },
     {
-        'iChartId': '343166',
-        'iSubChartId': '343166',
-        'sIdeToken': 'niKkHR',
+        'iChartId': '353339',
+        'iSubChartId': '353339',
+        'sIdeToken': 'ktvhpC',
     },
-    {
-        'iChartId': '343166',
-        'iSubChartId': '343166',
-        'sIdeToken': 'niKkHR',
-    },
-    {
-        'iChartId': '341100',
-        'iSubChartId': '341100',
-        'sIdeToken': '5xfVva',
-        'taskId': 3,
-    },
-    {
-        'iChartId': '341100',
-        'iSubChartId': '341100',
-        'sIdeToken': '5xfVva',
-        'taskId': 1,
-    },
-    {
-        'iChartId': '341100',
-        'iSubChartId': '341100',
-        'sIdeToken': '5xfVva',
-        'taskId': 2,
-    }
+    # {
+    #     'iChartId': '353358',
+    #     'iSubChartId': '353358',
+    #     'sIdeToken': '1pSkEO',
+    #     'typeId': 1,
+    #     'nums': 1,
+    # }
 ]
 if __name__ == "__main__":
     with open("config.yaml", "r") as file:
         config = yaml.safe_load(file)
     users = config["users"]
     logger.info(f"users: {len(users)}")
-
     for user in users:
         cookies = {
             # 'pgv_pvid': '7650512750',
@@ -76,8 +65,8 @@ if __name__ == "__main__":
                 **task,
                 'e_code': '0',
                 'g_code': '0',
-                'eas_url': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240731exstore%2F',
-                'eas_refer': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20240731exstore%2F%3Freqid%3Dc3751230-c899-4b92-b972-cabf5580d03b%26version%3D27',
+                'eas_url': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20241206newban%2F',
+                'eas_refer': 'http%3A%2F%2Flostark.qq.com%2Fcp%2Fa20241206newban%2F%3Freqid%3De4c38e27-7bc7-411d-ac7f-6eb408181d3e%26version%3D27',
                 'sMiloTag': 'AMS-fz-0811235523-NTeyaa-659629-1059453',
                 'ams_targetappid': 'wx0a71413944e4c4d0',
                 'channel': 'index',

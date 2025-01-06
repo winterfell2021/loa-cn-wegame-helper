@@ -6,20 +6,20 @@ from bs4 import BeautifulSoup
 from consts import ITEMS, ACTIVITY_ID, GET_SCORE_FLOW_ID, FLOW_ID
 
 DAILY = [
-    "恢复型战斗道具箱子*3",
+    #"恢复型战斗道具箱子*3",
     "交易牌*2",
-    "跳跃精华*1",
-    "新手生命气息恢复药水*2"
+    "新手生命气息恢复药水*2",
+    "灵魂叶子*3"
 ]
 WEEKLY = [
     "战斗道具综合箱子*5",
     "增益型战斗道具箱子*15",
+    "生活工具修复套件*10",
+    "太初碎片*5"
 ]
 MONTHLY = [
     "[活动]贝拉的祝福(14天)*1",
-    "银币幸运箱子*5",
     "梅内里克之书*2",
-    "传说~稀有卡牌包3*5",
 ]
 
 logger = logging.getLogger(__name__)
