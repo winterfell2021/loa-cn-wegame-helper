@@ -3,30 +3,8 @@ import time
 import yaml
 from loguru import logger
 tasks = [
-    {
-        'iChartId': '351942',
-        'iSubChartId': '351942',
-        'sIdeToken': 'kwQGNV',
-    },
-     {
-        'iChartId': '351951',
-        'iSubChartId': '351951',
-        'sIdeToken': '3DaEq5',
-        'query': True,
-    },
-    {
-        'iChartId': '353339',
-        'iSubChartId': '353339',
-        'sIdeToken': 'ktvhpC',
-    },
-    # {
-    #     'iChartId': '353358',
-    #     'iSubChartId': '353358',
-    #     'sIdeToken': '1pSkEO',
-    #     'typeId': 1,
-    #     'nums': 1,
-    # }
 ]
+
 if __name__ == "__main__":
     with open("config.yaml", "r") as file:
         config = yaml.safe_load(file)

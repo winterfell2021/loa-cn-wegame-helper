@@ -321,7 +321,7 @@ class User:
             return None
     
     def partner_sign(self):
-        function = "partnersignin2412"
+        function = "partnersignin2501"
         payload = "task_id=0&type=2"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
@@ -330,7 +330,7 @@ class User:
             logger.error(f"签到失败：{res}")
 
     def partnet_get_task_reward(self):
-        function = "partnergettaskreward2412"
+        function = "partnergettaskreward2501"
         payload = "task_id=0&type=2"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
@@ -339,7 +339,7 @@ class User:
             logger.error(f"领取失败：{res}")
             
     def partner_get_level_reward(self):
-        function = "partnergetlevelreward2412"
+        function = "partnergetlevelreward2501"
         payload = "task_id=0&type=3&id=0"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
@@ -349,7 +349,7 @@ class User:
             logger.error(f"领取失败：{res}")
 
     def partner_get_user_info(self):
-        function = "partnergetuserinfo2412"
+        function = "partnergetuserinfo2501"
         res = self._parnet_request(function, "")
         if res and res["code"] == 200:
             # logger.info(f"获取用户信息成功：{res}")
@@ -366,7 +366,7 @@ class User:
             logger.error(f"获取用户信息失败：{res}")
             
     def partner_user_lottery(self, lottery_type: int = 2):
-        function = "partneruserlottery2412"
+        function = "partneruserlottery2501"
         payload = f"iPageSize=10&iPageNow=1&lottery_type={lottery_type}"
         res = self._parnet_request(function, payload)
         if res and res["code"] == 200:
