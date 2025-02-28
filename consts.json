@@ -1,91 +1,66 @@
 {
-    "activity_id": "698038",
-    "flow_id": "1104021",
-    "exchange_flow_id": "1104019",
+    "activity_id": "703778",
+    "flow_id": "1110145",
+    "exchange_flow_id": "1110143",
     "packages": [
         {
-            "iPackageId": "3711122",
-            "sPackageId": "6064366",
+            "iPackageId": "3754529",
+            "sPackageId": "6151712",
             "sPackageName": "新手生命气息恢复药水*2"
         },
         {
-            "iPackageId": "3711123",
-            "sPackageId": "6064367",
-            "sPackageName": "恢复型战斗道具箱子*3"
-        },
-        {
-            "iPackageId": "3711124",
-            "sPackageId": "6064368",
+            "iPackageId": "3754531",
+            "sPackageId": "6151714",
             "sPackageName": "跳跃精华*1"
         },
         {
-            "iPackageId": "3711125",
-            "sPackageId": "6064369",
+            "iPackageId": "3754532",
+            "sPackageId": "6151715",
             "sPackageName": "交易牌*2"
         },
         {
-            "iPackageId": "3711126",
-            "sPackageId": "6064370",
+            "iPackageId": "3754533",
+            "sPackageId": "6151716",
             "sPackageName": "蕴含卢佩恩之光的货币箱子*2"
         },
         {
-            "iPackageId": "3711127",
-            "sPackageId": "6064371",
+            "iPackageId": "3754534",
+            "sPackageId": "6151717",
             "sPackageName": "灵魂叶子*3"
         },
         {
-            "iPackageId": "3711128",
-            "sPackageId": "6064372",
+            "iPackageId": "3754535",
+            "sPackageId": "6151718",
             "sPackageName": "战斗道具综合箱子*5"
         },
         {
-            "iPackageId": "3711129",
-            "sPackageId": "6064373",
-            "sPackageName": "生活工具修复套件*10"
-        },
-        {
-            "iPackageId": "3711130",
-            "sPackageId": "6064374",
+            "iPackageId": "3754537",
+            "sPackageId": "6151720",
             "sPackageName": "增益型战斗道具箱子*15"
         },
         {
-            "iPackageId": "3711131",
-            "sPackageId": "6064375",
-            "sPackageName": "传说~高级卡牌包3*5"
-        },
-        {
-            "iPackageId": "3711132",
-            "sPackageId": "6064376",
-            "sPackageName": "太初碎片*5"
-        },
-        {
-            "iPackageId": "3711133",
-            "sPackageId": "6064377",
+            "iPackageId": "3754540",
+            "sPackageId": "6151723",
             "sPackageName": "魔法学会特制染色箱子*1"
         },
         {
-            "iPackageId": "3711134",
-            "sPackageId": "6064378",
-            "sPackageName": "遗物好感度自选箱子*1"
-        },
-        {
-            "iPackageId": "3711135",
-            "sPackageId": "6064379",
+            "iPackageId": "3754542",
+            "sPackageId": "6151725",
             "sPackageName": "银币幸运箱子*5"
         },
         {
-            "iPackageId": "3711136",
-            "sPackageId": "6064380",
+            "iPackageId": "3754543",
+            "sPackageId": "6151726",
             "sPackageName": "[活动]贝拉的祝福(14天)*1"
         },
         {
-            "iPackageId": "3711137",
-            "sPackageId": "6064381",
+            "iPackageId": "3754544",
+            "sPackageId": "6151727",
             "sPackageName": "传说~稀有卡牌包3*5"
         },
         {
-            "iPackageId": "3711138",
-            "sPackageId": "6064382",
+            "iPackageId": "3754545",
+            "sPackageId": "6151728",
             "sPackageName": "梅内里克之书*2"
         }
     ]
